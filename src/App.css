@@ -14,6 +14,17 @@
   color: white;
 }
 
+.Live-game {
+  background-image: url("http://2.bp.blogspot.com/-hL3bMVxKGtk/VK39k7GwodI/AAAAAAAAfPI/MMcUqhGzYw0/s1600/1960-1950.png");
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  min-width: 100%;
+  min-height: 100%;
+  background-position: center bottom;
+}
+
 .App-intro {
   font-size: large;
 }
