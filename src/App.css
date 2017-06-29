@@ -9,7 +9,18 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 100px;
+  padding: 20px;
+  color: white;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.Stat-bar {
+  background-color: #222;
+  height: 180px;
   padding: 20px;
   color: white;
 }

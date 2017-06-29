@@ -4,8 +4,8 @@ export default class GameSetupContainer extends React.Component {
   constructor(){
     super()
 
-    this.state ={
-
+    this.state = {
+      
     }
 
   }

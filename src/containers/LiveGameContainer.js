@@ -1,4 +1,5 @@
 import React from 'react'
+import StatBar from '../components/StatBar'
 
 export default class LiveGameContainer extends React.Component {
   constructor(){
@@ -13,7 +14,7 @@ export default class LiveGameContainer extends React.Component {
   render(){
     return(
     <div className="Live-game">
-      <h1>Live Game</h1>
+      <StatBar/>
     </div>
    )
   }
