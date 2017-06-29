@@ -9,13 +9,21 @@
 
 .App-header {
   background-color: #222;
-  height: 100px;
+  height: 180px;
   padding: 20px;
   color: white;
 }
 
-.text-center {
+.player-info {
+  text-decoration-color:
+}
+
+.Time-clock {
     text-align: center;
+}
+
+.Away-stats {
+    text-align: right;
 }
 
 .Stat-bar {
@@ -23,6 +31,10 @@
   height: 180px;
   padding: 20px;
   color: white;
+}
+
+.align-middle{
+  vertical-align: middle
 }
 
 .Live-game {

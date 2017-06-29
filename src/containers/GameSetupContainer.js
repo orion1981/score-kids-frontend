@@ -5,7 +5,10 @@ export default class GameSetupContainer extends React.Component {
     super()
 
     this.state = {
-      
+      homeTeam: "",
+      awayTeam: "",
+      homePlayers: [],
+      awayPlayers: []
     }
 
   }
