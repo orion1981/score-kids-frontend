@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import {Grid, Row, Col} from 'react-bootstrap'
 
 export default function Statbar(props)  {
-
+// can assign each prop to a variable using destructured assignment
     return (
      <div className={`Stat-bar`}>
        <div className='container-fluid'>
