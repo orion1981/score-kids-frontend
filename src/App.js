@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import GameSetupContainer from './containers/GameSetupContainer'
 import LiveGameContainer from './containers/LiveGameContainer'
 import GameStatsContainer from './containers/GameStatsContainer'
+import NewTeamForm from './containers/NewTeamForm'
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
         <Switch>
           <Route path="/Setup" render={() =><GameSetupContainer/>}/>
           <Route path="/Live" render={() =><LiveGameContainer/>}/>
+          <Route path="/NewTeam" render={() =><NewTeamForm/>}/>
           <Route path="/Stats" render={() =><GameStatsContainer/>}/>
 
           <div className="App">
@@ -28,6 +30,7 @@ class App extends Component {
               <ul>
                 <li><Link to="/Setup" activeStyle={{ color: 'red' }}>Setup</Link></li>
                 <li><Link to="/Live" activeStyle={{ color: 'red' }}>Live Game</Link></li>
+                <li><Link to="/NewTeam" activeStyle={{ color: 'red' }}>Create a Team</Link></li>
                 <li><Link to="/Stats" activeStyle={{ color: 'red' }}>Stat page</Link></li>
               </ul>
             </p>
