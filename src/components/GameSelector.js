@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row , Col } from 'react-flexbox-grid'
-import { Link } from 'react-router-dom'
+
 
 export default class GameSelector extends React.Component {
   constructor(){
@@ -16,7 +16,7 @@ export default class GameSelector extends React.Component {
           <Col md={4}><input type="text" name="name" placeholder="game location..." ></input></Col>
           <Col md={4}><input type="text" name="name" placeholder="game lenth..." ></input></Col>
           <Col md={4}><input type="text" name="name" placeholder="date of game..." ></input> </Col>
-        
+
         </Row>
 
       )

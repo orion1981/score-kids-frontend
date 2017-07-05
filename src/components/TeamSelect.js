@@ -11,6 +11,7 @@ export default class TeamSelect extends React.Component {
   }
 
   getTeams = () => (
+
        this.props.teams.map(t => {
           let obj = {key:`${t.name}`, value: t, text:`${t.name} ${t.mascot} "${t.location}"`}
           return obj
@@ -21,7 +22,6 @@ export default class TeamSelect extends React.Component {
   sortAlpha = (array) => array.sort((a, b) => a.text.localeCompare(b.text))
 
   render(){
-
     const sortedTeams = this.sortAlpha(this.getTeams())
     return(
     <Dropdown

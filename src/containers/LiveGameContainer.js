@@ -1,7 +1,7 @@
 import React from 'react'
 import StatBar from '../components/StatBar'
 import Player from '../components/Player'
-import {Grid, Row, Col} from 'react-flexbox-grid'
+import { Row, Col} from 'react-flexbox-grid'
 
 
 export default class LiveGameContainer extends React.Component {
@@ -17,7 +17,19 @@ export default class LiveGameContainer extends React.Component {
 
   }
 
+  playerPositionHome(position){
+    console.log(this.props)
+    debugger
+  }
+
+  componentDidMount(){
+    this.playerPositionHome()
+  }
+
+
+
   render(){
+
     return(
     <div >
       <StatBar homeScore={this.state.homeScore} awayScore={this.state.awayScore} homeShots={this.state.homeShots} awayShots={this.state.awayShots}/>
@@ -26,7 +38,7 @@ export default class LiveGameContainer extends React.Component {
           <Row middle='xs'>
 
             <Col style={style.home.goalie} md={2}>
-              <Player orientation={style.home}/>
+              <Player orientation={style.home} position={this.playerPositionHome("goalie")}/>
             </Col>
             <Col style={style.home.defense} md={2}>
               <Player orientation={style.home}/>
@@ -54,6 +66,7 @@ export default class LiveGameContainer extends React.Component {
         </div>
     </div>
    )
+
   }
 }
 

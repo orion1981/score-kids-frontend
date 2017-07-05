@@ -11,6 +11,9 @@ import NewTeamForm from './containers/NewTeamForm'
 
 
 class App extends Component {
+  constructor(){
+    super()
+  }
   render() {
     return (
       <Router>
@@ -27,12 +30,14 @@ class App extends Component {
             </div>
             <p className="App-intro">
               Start page!
-              <ul>
-                <li><Link to="/Setup" activeStyle={{ color: 'red' }}>Setup</Link></li>
-                <li><Link to="/Live" activeStyle={{ color: 'red' }}>Live Game</Link></li>
-                <li><Link to="/NewTeam" activeStyle={{ color: 'red' }}>Create a Team</Link></li>
-                <li><Link to="/Stats" activeStyle={{ color: 'red' }}>Stat page</Link></li>
-              </ul>
+              <div>
+                <ul>
+                  <li><Link to="/Setup" activeStyle={{ color: 'red' }}>Setup</Link></li>
+                  <li><Link to="/Live" activeStyle={{ color: 'red' }}>Live Game</Link></li>
+                  <li><Link to="/NewTeam" activeStyle={{ color: 'red' }}>Create a Team</Link></li>
+                  <li><Link to="/Stats" activeStyle={{ color: 'red' }}>Stat page</Link></li>
+                </ul>
+              </div>
             </p>
           </div>
         </Switch>

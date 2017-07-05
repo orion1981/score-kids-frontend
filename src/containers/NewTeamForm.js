@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Checkbox } from 'semantic-ui-react'
+import { Form} from 'semantic-ui-react'
 
 export default class NewTeamForm extends React.Component {
   constructor(){
@@ -25,7 +25,7 @@ export default class NewTeamForm extends React.Component {
           <label>location</label>
           <input type="text" name="location" placeholder="location"/>
         </div>
-        
+
         <button className="ui button" type="submit">Submit</button>
       </Form>
     )
