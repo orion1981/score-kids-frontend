@@ -62,7 +62,7 @@ componentDidMount(){
                   <Col md={6}><TeamSelect teams={this.state.teams}  handleChange={this.handleAwayChange.bind(this)} />Away Team</Col>
                 </Row>
                 <GameSelector />
-                    <Link to="/Live"><input type="submit" value="submit" /></Link>
+                    <Link to="/Live" params={this.state.homeTeam.value}><input type="submit" value="submit" /></Link>
               </div>
             </form>
           </div>

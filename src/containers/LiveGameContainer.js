@@ -15,22 +15,29 @@ export default class LiveGameContainer extends React.Component {
       homeShots: 0,
       awayShots: 0,   }
 
+      console.log(props)
+
   }
 
   playerPositionHome(position){
     console.log(this.props)
-    debugger
   }
 
   componentDidMount(){
+    console.log("mountin",this.props);
     this.playerPositionHome()
+  }
+  componentWillReceiveProps(nextProps){
+    console.log("new props",nextProps);
+  }
+  componentWillUpdate(){
+    console.log("updating", this.props);
   }
 
 
 
   render(){
-
-    return(
+return(
     <div >
       <StatBar homeScore={this.state.homeScore} awayScore={this.state.awayScore} homeShots={this.state.homeShots} awayShots={this.state.awayShots}/>
 
