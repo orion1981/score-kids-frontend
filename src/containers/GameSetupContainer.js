@@ -7,12 +7,11 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import LiveGameContainer from '../containers/LiveGameContainer'
 
 export default class GameSetupContainer extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
     this.state = {
-      homeTeam: {},
-      awayTeam: {},
+
       teams:[],
       gameLocation: "",
       gameDuration: "",
@@ -37,20 +36,19 @@ componentDidMount(){
 
  handleHomeChange(e, value) {
    console.log(' home team pick',value, e)
-  this.setState({ homeTeam: value})
-
+   this.props.setHome(value)
  }
 
  handleAwayChange(e, value) {
    console.log(' away team pick',value, e)
-  this.setState({ awayTeam: value})
+  this.props.setAway(value)
  }
 
   render(){
     console.log(this.state)
     return(
       <div>
-        <Route path="/Live" render={() =><LiveGameContainer homeTeam={this.state.homeTeam.value} awayTeam={this.state.awayTeam.value}/>}/>
+        <Route path="/Live" render={() =><LiveGameContainer/>}/>
 
             <form onSubmit={ e => this.submitHandler(e)}>
               <div className="setup-page">
@@ -62,7 +60,7 @@ componentDidMount(){
                   <Col md={6}><TeamSelect teams={this.state.teams}  handleChange={this.handleAwayChange.bind(this)} />Away Team</Col>
                 </Row>
                 <GameSelector />
-                    <Link to="/Live" params={this.state.homeTeam.value}><input type="submit" value="submit" /></Link>
+                    <Link to="/Live" ><input type="submit" value="submit" /></Link>
               </div>
             </form>
           </div>

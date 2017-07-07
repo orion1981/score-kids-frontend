@@ -20,7 +20,7 @@ export default class LiveGameContainer extends React.Component {
   }
 
   playerPositionHome(position){
-    console.log(this.props)
+    return this.props.homeTeam.value.players[0]
   }
 
   componentDidMount(){
@@ -45,7 +45,7 @@ return(
           <Row middle='xs'>
 
             <Col style={style.home.goalie} md={2}>
-              <Player orientation={style.home} position={this.playerPositionHome("goalie")}/>
+              <Player id="goalie" orientation={style.home} info={this.playerPositionHome.bind(this)} />
             </Col>
             <Col style={style.home.defense} md={2}>
               <Player orientation={style.home}/>

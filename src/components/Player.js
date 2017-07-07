@@ -7,15 +7,31 @@ export default class Player extends React.Component  {
     super(props)
 
     this.state = {
+      shots: 0,
+      assists: 0,
+      goals: 0,
       isNoteCard: false
     }
-
+    this.addStat = this.addStat.bind(this)
+    this.subtractStat = this.subtractStat.bind(this)
   }
 
   handleClick(){
     console.log('handleClick')
     this.state.isNoteCard ? this.setState({isNoteCard: false}) : this.setState({isNoteCard: true})
     console.log(this.state)
+  }
+
+  addStat(e){
+    console.log("1 up!")
+    let value = e.target.id
+    this.setState({ [value]: this.state[value] + 1 })
+  }
+
+  subtractStat(e){
+    console.log("Take me Away!")
+    let value = e.target.id
+    this.setState({ [value]: this.state[value] - 1})
   }
 
   statCard(){
@@ -27,13 +43,14 @@ export default class Player extends React.Component  {
           <Button onClick={this.handleClick.bind(this)}bsStyle="danger">X</Button>
         </Col>
       </Row>
-        <Row><Col md={9}><Button bsStyle="primary">+Goal</Button>  <Button bsStyle="warning">-Goal</Button></Col><Col md={2}><h4 className="card-stat">1</h4></Col></Row>
-        <Row><Col md={9}><Button bsStyle="primary">+Shot</Button>  <Button bsStyle="warning">-Shot</Button></Col><Col md={2}><h4 className="card-stat">4</h4></Col></Row>
-        <Row><Col md={9}><Button bsStyle="primary">Assist</Button>  <Button bsStyle="warning">Assist</Button></Col><Col md={1}><h4 className="card-stat">2</h4></Col></Row>
+        <Row><Col md={9}><Button id="goals" bsStyle="primary" onClick={this.addStat}>+Goal</Button>  <Button id="goals" bsStyle="warning" onClick={this.subtractStat}>-Goal</Button></Col><Col md={2}><h4 className="goal-stat">{this.state.goals}</h4></Col></Row>
+        <Row><Col md={9}><Button id="shots" bsStyle="primary" onClick={this.addStat}>+Shot</Button>  <Button id="shots" bsStyle="warning" onClick={this.subtractStat}>-Shot</Button></Col><Col md={2}><h4 className="shot-stat">{this.state.shots}</h4></Col></Row>
+        <Row><Col md={9}><Button id="assists" bsStyle="primary" onClick={this.addStat}>Assist</Button>  <Button id="assists" bsStyle="warning" onClick={this.subtractStat}>Assist</Button></Col><Col md={1}><h4 className="assist-stat">{this.state.assists}</h4></Col></Row>
       </Panel>
     )
   }
   playerImage(){
+    console.log("The Pic", this.props)
     return(
       <Row>
         <div>

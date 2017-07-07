@@ -13,13 +13,30 @@ import NewTeamForm from './containers/NewTeamForm'
 class App extends Component {
   constructor(){
     super()
+
+    this.state = {
+      homeTeam: {},
+      awayTeam: {}
+    }
+
   }
+
+  setHomeTeam(value){
+    console.log("app home change")
+    this.setState({ homeTeam: value})
+  }
+
+  setAwayTeam(value){
+    console.log("app away change")
+    this.setState({ awayTeam: value})
+  }
+
   render() {
     return (
       <Router>
         <Switch>
-          <Route path="/Setup" render={() =><GameSetupContainer/>}/>
-          <Route path="/Live" render={() =><LiveGameContainer/>}/>
+          <Route path="/Setup" render={() =><GameSetupContainer setHome={this.setHomeTeam.bind(this)} setAway={this.setAwayTeam.bind(this)}/>}/>
+          <Route path="/Live" render={() =><LiveGameContainer homeTeam={this.state.homeTeam} awayTeam={this.state.awayTeam}/>}/>
           <Route path="/NewTeam" render={() =><NewTeamForm/>}/>
           <Route path="/Stats" render={() =><GameStatsContainer/>}/>
 
