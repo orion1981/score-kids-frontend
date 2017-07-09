@@ -82,6 +82,7 @@ export default class Player extends React.Component  {
     console.log(this.props)
     return(
       <Panel>
+      <Row><h1>{this.state.player.name}'s</h1></Row>
       <Row middle="xs">
         <Col md={9}><h3>Stat Card</h3></Col>
         <Col md={2}>
