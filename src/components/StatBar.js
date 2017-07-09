@@ -12,9 +12,9 @@ export default function Statbar(props)  {
            </div>
        </div>
        <Row className="">
-          <Col xs={6} md={4} className="Home-stats"><code>HOME TEAM Score:{props.homeScore} Shots:{props.homeShots}</code></Col>
+          <Col xs={6} md={4} className="Home-stats"><code><h1>HOME TEAM Score:{props.homeScore} Shots:{props.homeShots}</h1></code></Col>
           <Col xs={6} md={4} className="Time-clock"><code>Time remaining:</code></Col>
-          <Col xsHidden md={4} className="Away-stats"><code>AWAY TEAM Shots:{props.awayShots} Score:{props.awayScore}</code></Col>
+          <Col xsHidden md={4} className="Away-stats"><code><h1>AWAY TEAM  Score:{props.awayScore} Shots:{props.awayShots}</h1></code></Col>
         </Row>
 
      </div>

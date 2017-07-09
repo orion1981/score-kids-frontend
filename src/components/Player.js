@@ -7,6 +7,7 @@ export default class Player extends React.Component  {
     super(props)
 
     this.state = {
+      player: {},
       shots: 0,
       assists: 0,
       goals: 0,
@@ -14,6 +15,7 @@ export default class Player extends React.Component  {
     }
     this.addStat = this.addStat.bind(this)
     this.subtractStat = this.subtractStat.bind(this)
+    // this.playerPosition = this.playerPosition.bind(this)
   }
 
   handleClick(){
@@ -25,16 +27,59 @@ export default class Player extends React.Component  {
   addStat(e){
     console.log("1 up!")
     let value = e.target.id
-    this.setState({ [value]: this.state[value] + 1 })
+    this.setState({ [value]: this.state[value] + 1})
+      this.addStatsLive(e)
+  }
+
+  addStatsLive(e){
+    let value = e.target.id
+    if (value === "goals")
+      {this.props.hVw === "home" ? this.props.addHomeG() : this.props.addAwayG(),
+      this.props.hVw === "home" ? this.props.addHomeS()  : this.props.addAwayS(),
+      this.setState({ shots: this.state.shots + 1})}
+    else if (value === "shots")
+      {this.props.hVw === "home" ? this.props.addHomeS() : this.props.addAwayS()}
   }
 
   subtractStat(e){
     console.log("Take me Away!")
     let value = e.target.id
-    this.setState({ [value]: this.state[value] - 1})
+    this.subtractStatsLive(e)
+    var notNegative = this.state[value] === 0 ? 0 : this.state[value] - 1
+    this.setState({ [value]: notNegative})
   }
 
+ subtractStatsLive(e){
+   let value = e.target.id
+    if (value === "goals")
+      {this.state[value] > 0 ? (this.props.hVw === "home" ? this.props.subtractHomeG() : this.props.subtractAwayG()) : null}
+      else if (value === "shots")
+      {this.state[value] > 0 ? (this.props.hVw === "home" ? this.props.subtractHomeS() : this.props.subtractAwayS()) : null}
+  }
+
+  playerPosition(position){
+    return this.props.info.find(player =>{
+      return (player.position === position )
+
+    })
+  console.log("called upon")
+  }
+
+    componentWillMount(){
+        console.log("will mount")
+      var playerInfo = this.playerPosition(this.props.id)
+        console.log("player will change")
+      this.setState({ player: playerInfo})
+        console.log("player did change")
+
+    }
+
+    componentDidMount(){
+      console.log('did mount')
+    }
+
   statCard(){
+    console.log(this.props)
     return(
       <Panel>
       <Row middle="xs">
@@ -49,13 +94,20 @@ export default class Player extends React.Component  {
       </Panel>
     )
   }
+
+  // glyphDirection(){
+  //   if (this.props.hVw === "home")
+  //   return "arrow-right"
+  //   else
+  //   return "left-arrow"
+  // }
+
   playerImage(){
-    console.log("The Pic", this.props)
     return(
       <Row>
         <div>
           <img onClick={this.handleClick.bind(this)} style={this.props.orientation} src="https://userscontent2.emaze.com/images/ca4cecf5-8daf-49fa-93dd-02cd2958d2af/89c38a2288e09204c53fb13fdf1a082a.png"/>
-          <Panel style={playerName}><Glyphicon glyph="user"/>   &nbsp; The Player</Panel>
+          {this.props.hVw === "home" ? <Panel style={playerName}>#{this.state.player.player_number} {this.state.player.name}    &nbsp;<Glyphicon glyph="arrow-right"/></Panel> : <Panel style={playerName}><Glyphicon glyph="arrow-left"/>   &nbsp; {this.state.player.name} #{this.state.player.player_number}</Panel>}
         </div>
       </Row>
     )

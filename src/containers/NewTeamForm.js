@@ -14,7 +14,9 @@ export default class NewTeamForm extends React.Component {
 
   handleSubmit(){
     console.log("submit new team")
-  }
+    
+
+   }
 
   createTeam(){
     const url = "http:localhost:3000/api/v1/teams"
@@ -30,7 +32,7 @@ export default class NewTeamForm extends React.Component {
     this.setState({})
   }
 
-  createTeam(playerPosition){
+  createPlayer(playerPosition){
     const url = "http:localhost:3000/api/v1/players"
     axios({
       method: 'post',
