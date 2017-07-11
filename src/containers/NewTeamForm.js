@@ -1,126 +1,168 @@
 import React from 'react'
 import axios from 'axios'
 import { Form} from 'semantic-ui-react'
+import {withRouter} from 'react-router-dom'
 
-export default class NewTeamForm extends React.Component {
+ class NewTeamForm extends React.Component {
   constructor(){
     super()
 
     this.state = {
-      teamPlayers:[]
+      teamName: "",
+      mascot: "",
+      location: "",
+      goalieName: "",
+      goalieNumber: "",
+      centerName: "",
+      centerNumber: "",
+      leftWingName: "",
+      leftWingNumber: "",
+      rightWingName: "",
+      rightWingNumber: "",
+      leftDefenseName: "",
+      leftDefenseNumber: "",
+      rightDefenseName:"",
+      rightDefenseNumber:""
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+      this.createTeam = this.createTeam.bind(this)
   }
 
-  handleSubmit(){
+  handleChange(e){
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+    console.log(e.target.value)
+  }
+
+  handleSubmit(e){
+    e.preventDefault()
     console.log("submit new team")
-    
+    this.createTeam()
 
    }
 
   createTeam(){
-    const url = "http:localhost:3000/api/v1/teams"
-    axios({
-      method: 'post',
-      url: url,
-      data: {
-        // location: location,
-        // mascot: mascot,
+    const url = "http://localhost:3000/api/v1/teams"
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.state.teamName,
+        mascot: this.state.mascot,
+        location: this.state.location,
+        players: [
+          {
+          position: "Goalie",
+          name: this.state.goalieName,
+          player_number: this.state.goalieNumber},
+          {
+          position: "Center",
+          name: this.state.centerName,
+          player_number: this.state.centerNumber},
+          {
+          position: "Left Wing",
+          name: this.state.leftWingName,
+          player_number: this.state.leftWingNumber},
+          {
+          position: "Right Wing",
+          name: this.state.rightWingName,
+          player_number: this.state.rightWingNumber},
+          {
+          position: "Left Defender",
+          name: this.state.leftDefenderName,
+          player_number: this.state.leftDefenderNumber},
+          {
+          position: "Right Defender",
+          name: this.state.rightDefenderName,
+          player_number: this.state.rightDefenderNumber},
 
-      }
-    }).then(response => console.log(response.data))
-    this.setState({})
+        ]
+
+      })
+    }).then(response => {
+      console.log(response.data)
+    })
+    .then(this.props.history.push('/SetUp'))
   }
-
-  createPlayer(playerPosition){
-    const url = "http:localhost:3000/api/v1/players"
-    axios({
-      method: 'post',
-      url: url,
-      data: {
-        // position: playerPosition,
-        // name: name,
-        // player_number: number,
-        // team_id: teamId
-      }
-    }).then(response => console.log(response.data))
-  }
-
 
   render(){
     return(
       <Form className="ui form" onSubmit={this.handleSubmit}>
         <div className="field">
            <label>Team Name</label>
-           <input type="text" name="team-name" placeholder="Team name.."/>
+           <input type="text" value={this.state.teamName} name="teamName" placeholder="Team name.." onChange={this.handleChange.bind(this)}/>
         </div>
         <div className="field">
            <label>Mascot</label>
-           <input type="text" name="mascot" placeholder="Mascot.."/>
+           <input type="text" value={this.state.mascot} name="mascot" placeholder="Mascot.." onChange={this.handleChange.bind(this)}/>
           </div>
         <div className="field">
             <label>Location</label>
-            <input type="text" name="location" placeholder="Location.."/>
+            <input type="text" value={this.state.location} name="location" placeholder="Location.." onChange={this.handleChange.bind(this)}/>
         </div>
             <h1>Players</h1>
             <div className='two fields'>
               <div className="six wide field">
                   <label>Goalie:</label>
-                  <input type="text" name="goalie[name]" placeholder="player name...."/>
+                  <input type="text" value={this.state.goalieName} name="goalieName" placeholder="player name...."  onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="six wide field">
                 <label>Goalie #:</label>
-                <input type="text" name="goalie[number]" placeholder="Jersey #"/>
+                <input type="text" value={this.state.goalieNumber} name="goalieNumber" placeholder="Jersey #"  onChange={this.handleChange.bind(this)}/>
               </div>
             </div>
             <div className='two fields'>
               <div className="six wide field">
                   <label>Center:</label>
-                  <input type="text" name="center[name]" placeholder="player name...."/>
+                  <input type="text" value={this.state.centerName} name="centerName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="six wide field">
                 <label>Center #:</label>
-                <input type="text" name="center[number]" placeholder="Jersey #"/>
+                <input type="text" value={this.state.centerNumber} name="centerNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
               </div>
             </div>
             <div className='two fields'>
               <div className="six wide field">
                   <label>Left Winger:</label>
-                  <input type="text" name="left-wing[name]" placeholder="player name...."/>
+                  <input type="text" value={this.state.leftWingName} name="leftWingName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="six wide field">
                 <label>Left Winger #:</label>
-                <input type="text" name="left-wing[number]" placeholder="Jersey #"/>
+                <input type="text" value={this.state.leftWingNumber} name="leftWingNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
               </div>
             </div>
             <div className='two fields'>
               <div className="six wide field">
                   <label>Right Winger:</label>
-                  <input type="text" name="right-wing[name]" placeholder="player name...."/>
+                  <input type="text" value={this.state.rightWingName} name="rightWingName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="six wide field">
                 <label>Right Winger #:</label>
-                <input type="text" name="right-wing[number]" placeholder="Jersey #"/>
+                <input type="text" value={this.state.rightWingNumber} name="rightWingNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
               </div>
             </div>
             <div className='two fields'>
               <div className="six wide field">
                   <label>Left Defense:</label>
-                  <input type="text" name="left-def[name]" placeholder="player name...."/>
+                  <input type="text" value={this.state.leftDefenderName} name="leftDefenderName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="six wide field">
                 <label>Left Defense #:</label>
-                <input type="text" name="left-def[number]" placeholder="Jersey #"/>
+                <input type="text" value={this.state.leftDefenderNumber} name="leftDefenderNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
               </div>
             </div>
             <div className='two fields'>
               <div className="six wide field">
                   <label>Right Defense:</label>
-                  <input type="text" name="right-def[name]" placeholder="player name...."/>
+                  <input type="text" value={this.state.rightDefenderName} name="rightDefenderName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="six wide field">
                 <label>Right Defense #:</label>
-                <input type="text" name="right-def[number]" placeholder="Jersey #"/>
+                <input type="text" value={this.state.rightDefenderNumber} name="rightDefenderNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
               </div>
             </div>
 
@@ -130,6 +172,7 @@ export default class NewTeamForm extends React.Component {
   }
 }
 
+export default withRouter(NewTeamForm)
 
 
 

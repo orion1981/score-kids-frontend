@@ -2,13 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col} from 'react-bootstrap'
 
-export default function Statbar(props)  {
+export default function StatBar(props)  {
 
     return (
      <div className={`Stat-bar`}>
        <div className='container-fluid'>
          <div className='navbar-header'>
-           <Link to="/" className='navbar-brand'>home</Link>
            </div>
        </div>
        <Row className="">

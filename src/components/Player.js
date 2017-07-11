@@ -66,23 +66,17 @@ export default class Player extends React.Component  {
   }
 
     componentWillMount(){
-        console.log("will mount")
       var playerInfo = this.playerPosition(this.props.id)
-        console.log("player will change")
       this.setState({ player: playerInfo})
-        console.log("player did change")
-
     }
 
-    componentDidMount(){
-      console.log('did mount')
-    }
+
 
   statCard(){
     console.log(this.props)
     return(
       <Panel>
-      <Row><h1>{this.state.player.name}'s</h1></Row>
+      <Row><h1>{this.state.player.name}</h1></Row>
       <Row middle="xs">
         <Col md={9}><h3>Stat Card</h3></Col>
         <Col md={2}>
@@ -104,14 +98,18 @@ export default class Player extends React.Component  {
   // }
 
   playerImage(){
-    return(
-      <Row>
-        <div>
-          <img onClick={this.handleClick.bind(this)} style={this.props.orientation} src="https://userscontent2.emaze.com/images/ca4cecf5-8daf-49fa-93dd-02cd2958d2af/89c38a2288e09204c53fb13fdf1a082a.png"/>
-          {this.props.hVw === "home" ? <Panel style={playerName}>#{this.state.player.player_number} {this.state.player.name}    &nbsp;<Glyphicon glyph="arrow-right"/></Panel> : <Panel style={playerName}><Glyphicon glyph="arrow-left"/>   &nbsp; {this.state.player.name} #{this.state.player.player_number}</Panel>}
-        </div>
-      </Row>
-    )
+    if (this.state.player) {
+      return(
+        <Row>
+          <div>
+            <img onClick={this.handleClick.bind(this)} style={this.props.orientation} src="https://userscontent2.emaze.com/images/ca4cecf5-8daf-49fa-93dd-02cd2958d2af/89c38a2288e09204c53fb13fdf1a082a.png"/>
+            {this.props.hVw === "home" ? <Panel style={playerName}>#{this.state.player.player_number} {this.state.player.name}    &nbsp;<Glyphicon glyph="arrow-right"/></Panel> : <Panel style={playerName}><Glyphicon glyph="arrow-left"/>   &nbsp; {this.state.player.name} #{this.state.player.player_number}</Panel>}
+          </div>
+        </Row>
+      )
+    } else {
+      return null
+    }
   }
 
   render(){
@@ -126,6 +124,7 @@ export default class Player extends React.Component  {
 const playerName = {
   marginRight: 15,
   marginLeft: 15
+
 }
 
 // const playerStyle = {

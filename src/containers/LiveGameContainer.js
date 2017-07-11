@@ -1,6 +1,7 @@
 import React from 'react'
 import StatBar from '../components/StatBar'
 import Player from '../components/Player'
+import { Button } from 'semantic-ui-react'
 import { Row, Col} from 'react-flexbox-grid'
 
 
@@ -19,7 +20,7 @@ export default class LiveGameContainer extends React.Component {
 
   }
 
-  clickScore
+
 
   componentDidMount(){
     console.log("mountin",this.props);
@@ -68,39 +69,45 @@ export default class LiveGameContainer extends React.Component {
       this.setState({ awayShots: this.state.awayShots - 1})
   }
 
+  endGame(){
+    console.log('end the game')
+  }
 
   render(){
 
 return(
     <div >
-      <StatBar homeScore={this.state.homeScore} awayScore={this.state.awayScore} homeShots={this.state.homeShots} awayShots={this.state.awayShots}/>
-
+      <StatBar homeScore={this.state.homeScore} awayScore={this.state.awayScore} homeShots={this.state.homeShots} awayShots={this.state.awayShots} endGame={this.endGame.bind(this)}/>
         <div className="Live-game">
           <Row middle='xs'>
 
             <Col style={style.home.goalie} md={2}>
-              <Player id="Goalie" hVw="home" orientation={style.home} info={this.props.homeTeam.value.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
+              <Player id="Goalie" hVw="home" orientation={style.home} info={this.props.homeTeam.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
             </Col>
             <Col style={style.home.defense} md={2}>
-              <Player id="Left Defender" hVw="home" orientation={style.home} info={this.props.homeTeam.value.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
-              <Player id="Right Defender" hVw="home" orientation={style.home} info={this.props.homeTeam.value.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
+              <Player id="Left Defender" hVw="home" orientation={style.home} info={this.props.homeTeam.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
+              <Player id="Right Defender" hVw="home" orientation={style.home} info={this.props.homeTeam.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
             </Col>
             <Col style={style.home.offense} md={2}>
-              <Player id="Left Wing" hVw="home" orientation={style.home} info={this.props.homeTeam.value.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
-              <Player id="Center" hVw="home" orientation={style.home} info={this.props.homeTeam.value.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
-              <Player id="Right Wing" hVw="home" orientation={style.home} info={this.props.homeTeam.value.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
+              <Player id="Left Wing" hVw="home" orientation={style.home} info={this.props.homeTeam.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
+              <Player id="Center" hVw="home" orientation={style.home} info={this.props.homeTeam.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
+              <Player id="Right Wing" hVw="home" orientation={style.home} info={this.props.homeTeam.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
             </Col>
             <Col style={style.away.offense} md={2}>
-              <Player id="Right Wing" hVw="away" orientation={style.away} info={this.props.awayTeam.value.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
-              <Player id="Center" hVw="away" orientation={style.away} info={this.props.awayTeam.value.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
-              <Player id="Left Wing" hVw="away" orientation={style.away} info={this.props.awayTeam.value.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
+              <Player id="Right Wing" hVw="away" orientation={style.away} info={this.props.awayTeam.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
+              <Player id="Center" hVw="away" orientation={style.away} info={this.props.awayTeam.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
+              <Player id="Left Wing" hVw="away" orientation={style.away} info={this.props.awayTeam.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
             </Col>
             <Col style={style.away.defense} md={2}>
-              <Player id="Right Defender" hVw="away" orientation={style.away} info={this.props.awayTeam.value.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
-              <Player id="Left Defender" hVw="away" orientation={style.away} info={this.props.awayTeam.value.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
+              <Player id="Right Defender" hVw="away" orientation={style.away} info={this.props.awayTeam.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
+              <Player id="Left Defender" hVw="away" orientation={style.away} info={this.props.awayTeam.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
             </Col>
             <Col style={style.away.goalie} md={2}>
-              <Player id="Goalie" hVw="away" orientation={style.away} info={this.props.awayTeam.value.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
+              <Player id="Goalie" hVw="away" orientation={style.away} info={this.props.awayTeam.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
+              <Button className="ui fade animated button">
+               <div className="visible content">Sign-up for a Pro account</div>
+               <div className="hidden content">$12.99 a month</div>
+              </Button>
             </Col>
 
           </Row>
@@ -148,5 +155,8 @@ const style = {
       paddingTop: 150
     }
   },
+  button: {
+    marginTop: 100
+  }
 
 }

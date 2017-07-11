@@ -36,12 +36,12 @@ componentDidMount(){
 
  handleHomeChange(e, value) {
    console.log(' home team pick',value, e)
-   this.props.setHome(value)
+   this.props.setHome(value.value)
  }
 
  handleAwayChange(e, value) {
    console.log(' away team pick',value, e)
-  this.props.setAway(value)
+  this.props.setAway(value.value)
  }
 
   render(){
