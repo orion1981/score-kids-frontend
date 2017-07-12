@@ -27,11 +27,17 @@ export default class Player extends React.Component  {
   addStat(e){
     console.log("1 up!")
     let value = e.target.id
+    this.props.sendPlayerStats({
+      role: this.props.stateId,
+      stat:[value],
+      value:this.state[value] + 1
+    })
     this.setState({ [value]: this.state[value] + 1})
-      this.addStatsLive(e)
+    this.addStatsLive(e)
   }
 
   addStatsLive(e){
+    console.log("live Stats up")
     let value = e.target.id
     if (value === "goals")
       {this.props.hVw === "home" ? this.props.addHomeG() : this.props.addAwayG(),
@@ -43,9 +49,14 @@ export default class Player extends React.Component  {
 
   subtractStat(e){
     console.log("Take me Away!")
-    let value = e.target.id
+      let value = e.target.id
+      this.props.sendPlayerStats({
+        role:this.props.stateId,
+        stat:[value],
+        value: notNegative
+      })
     this.subtractStatsLive(e)
-    var notNegative = this.state[value] === 0 ? 0 : this.state[value] - 1
+      var notNegative = this.state[value] === 0 ? 0 : this.state[value] - 1
     this.setState({ [value]: notNegative})
   }
 
