@@ -77,8 +77,10 @@ export default class Player extends React.Component  {
   }
 
     componentWillMount(){
+
       var playerInfo = this.playerPosition(this.props.id)
       this.setState({ player: playerInfo})
+    
     }
 
 

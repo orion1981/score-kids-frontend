@@ -11,8 +11,6 @@ import {withRouter} from 'react-router-dom'
       teamName: "",
       mascot: "",
       location: "",
-      goalieName: "",
-      goalieNumber: "",
       centerName: "",
       centerNumber: "",
       leftWingName: "",
@@ -22,7 +20,9 @@ import {withRouter} from 'react-router-dom'
       leftDefenseName: "",
       leftDefenseNumber: "",
       rightDefenseName:"",
-      rightDefenseNumber:""
+      rightDefenseNumber:"",
+      goalieName: "",
+      goalieNumber: "",
     }
     this.handleSubmit = this.handleSubmit.bind(this)
       this.createTeam = this.createTeam.bind(this)
@@ -56,10 +56,6 @@ import {withRouter} from 'react-router-dom'
         location: this.state.location,
         players: [
           {
-          position: "Goalie",
-          name: this.state.goalieName,
-          player_number: this.state.goalieNumber},
-          {
           position: "Center",
           name: this.state.centerName,
           player_number: this.state.centerNumber},
@@ -79,14 +75,17 @@ import {withRouter} from 'react-router-dom'
           position: "Right Defender",
           name: this.state.rightDefenderName,
           player_number: this.state.rightDefenderNumber},
+          {
+          position: "Goalie",
+          name: this.state.goalieName,
+          player_number: this.state.goalieNumber},
 
         ]
 
       })
     }).then(response => {
       console.log(response.data)
-    })
-    .then(this.props.history.push('/SetUp'))
+    }).then(this.props.history.push('/SetUp'))
   }
 
   render(){
