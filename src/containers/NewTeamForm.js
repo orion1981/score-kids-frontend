@@ -92,7 +92,7 @@ import {withRouter} from 'react-router-dom'
     return(
 
       <Form className="ui form" onSubmit={this.handleSubmit}>
-        <div className="setup-page">
+        <div className="new-team">
           <Container>
             <h1>Create New Team</h1>
               <div className="six wide field">

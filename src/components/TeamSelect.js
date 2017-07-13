@@ -24,7 +24,7 @@ export default class TeamSelect extends React.Component {
   render(){
     const sortedTeams = this.sortAlpha(this.getTeams())
     return(
-      <Button.Group color='purple' fluid size="massive">
+      <Button.Group color={this.props.buttonColor} fluid size="massive">
     <Dropdown placeholder='Select Team'
    search
    floating

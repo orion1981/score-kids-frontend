@@ -4,6 +4,7 @@ import Player from '../components/Player'
 import { Button } from 'semantic-ui-react'
 import { Row, Col} from 'react-flexbox-grid'
 import {withRouter} from 'react-router-dom'
+import GameStatsContainer from '../containers/GameStatsContainer'
 
 class LiveGameContainer extends React.Component {
   constructor(props){
@@ -11,13 +12,16 @@ class LiveGameContainer extends React.Component {
 
     this.state ={
 
+      overlay: "none",
       homeScore: 0,
       awayScore: 0,
       homeShots: 0,
       awayShots: 0,
+      homeAssists: 0,
       playersStats: {
         awayGoalie:{
           playerId: this.props.awayTeam.players[5].id,
+          playerName: this.props.awayTeam.players[5].name,
           goals: 0,
           shots: 0,
           assists: 0,
@@ -25,36 +29,42 @@ class LiveGameContainer extends React.Component {
         },
         awayCenter:{
           playerId: this.props.awayTeam.players[0].id,
+          playerName: this.props.awayTeam.players[0].name,
           goals: 0,
           shots: 0,
           assists: 0
         },
         awayLeftWing:{
           playerId: this.props.awayTeam.players[1].id,
+          playerName: this.props.awayTeam.players[1].name,
           goals: 0,
           shots: 0,
           assists: 0
         },
         awayRightWing:{
           playerId: this.props.awayTeam.players[2].id,
+          playerName: this.props.awayTeam.players[2].name,
           goals: 0,
           shots: 0,
           assists: 0
         },
         awayLeftDefender:{
           playerId: this.props.awayTeam.players[3].id,
+          playerName: this.props.awayTeam.players[3].name,
           goals: 0,
           shots: 0,
           assists: 0
         },
         awayRightDefender:{
           playerId: this.props.awayTeam.players[4].id,
+          playerName: this.props.awayTeam.players[4].name,
           goals: 0,
           shots: 0,
           assists: 0
         },
         homeGoalie:{
           playerId: this.props.awayTeam.players[5].id,
+          playerName: this.props.awayTeam.players[5].name,
           goals: 0,
           shots: 0,
           assists: 0,
@@ -62,30 +72,35 @@ class LiveGameContainer extends React.Component {
         },
         homeCenter:{
           playerId: this.props.homeTeam.players[0].id,
+          playerName: this.props.homeTeam.players[0].name,
           goals: 0,
           shots: 0,
           assists: 0
         },
         homeLeftWing:{
           playerId: this.props.homeTeam.players[1].id,
+          playerName: this.props.homeTeam.players[1].name,
           goals: 0,
           shots: 0,
           assists: 0
         },
         homeRightWing:{
           playerId: this.props.homeTeam.players[2].id,
+          playerName: this.props.homeTeam.players[2].name,
           goals: 0,
           shots: 0,
           assists: 0
         },
         homeLeftDefender:{
           playerId: this.props.homeTeam.players[3].id,
+          playerName: this.props.homeTeam.players[3].name,
           goals: 0,
           shots: 0,
           assists: 0
         },
         homeRightDefender:{
           playerId: this.props.homeTeam.players[4].id,
+          playerName: this.props.homeTeam.players[4].name,
           goals: 0,
           shots: 0,
           assists: 0
@@ -120,6 +135,7 @@ class LiveGameContainer extends React.Component {
 
 
   addHomeGoal(){
+
       this.setState({ homeScore: this.state.homeScore + 1})
       console.log("adding home goal")
   }
@@ -152,12 +168,31 @@ class LiveGameContainer extends React.Component {
       this.setState({ awayShots: this.state.awayShots - 1})
   }
 
+  addHomeAssist(){
+      this.setState({ homeAssists: this.state.homeAssists + 1})
+  }
+
+  addAwayAssist(){
+      this.setState({ awayAssists: this.state.awayAssists + 1})
+  }
+
+  subtractHomeAssist(){
+      this.setState({ homeAssists: this.state.homeAssists - 1})
+  }
+
+  subtractAwayAssist(){
+      this.setState({ awayAssists: this.state.awayAssists - 1})
+  }
+
+  //send assist actions to player component
+
 
 
   endGame(){
     console.log('end the game')
     console.log(this.state)
     this.createGame()
+    this.setState({overlay: "block"})
   }
 
   createGame(){
@@ -242,14 +277,14 @@ class LiveGameContainer extends React.Component {
       })
     }).then(response => {
       console.log(response.data)
-    }).then(this.props.history.push("/Stats"))
+    })
   }
 
   render(){
 
 return(
     <div >
-      <StatBar homeScore={this.state.homeScore} awayScore={this.state.awayScore} homeShots={this.state.homeShots} awayShots={this.state.awayShots} endGame={this.endGame.bind(this)}/>
+      <StatBar homeScore={this.state.homeScore} awayScore={this.state.awayScore} homeShots={this.state.homeShots} homeAssists={this.state.homeAssists} awayShots={this.state.awayShots} endGame={this.endGame.bind(this)}/>
         <div>
           <Row middle='xs' className="Live-game" id="Live-game-box">
 
@@ -276,14 +311,14 @@ return(
             </Col>
             <Col style={style.away.goalie} md={2}>
               <Player sendPlayerStats={this.collectPlayerStats} stateId="awayGoalie" id="Goalie" hVw="away" orientation={style.home} info={this.props.awayTeam.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
-
             </Col>
 
           </Row>
-          <Button id="end_game_button"  color="red" type="submit" size="massive" onClick={this.endGame.bind(this)} >
+          <Button id="end_game_button"  color="green" type="submit" size="massive" onClick={this.endGame.bind(this)} >
            End Game/Update Stats
           </Button>
         </div>
+        <div style={{display: this.state.overlay}}className="stat-display"><GameStatsContainer players={this.state.playersStats} /></div>
     </div>
    )
 

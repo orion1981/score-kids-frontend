@@ -62,17 +62,20 @@ componentDidMount(){
                   </Row>
                   <Row middle='xs'>
 
-                      <Col md={6}><TeamSelect teams={this.state.teams}  handleChange={this.handleHomeChange.bind(this)} /></Col>
+                      <Col md={6}><TeamSelect teams={this.state.teams}  handleChange={this.handleHomeChange.bind(this)} buttonColor="blue" /></Col>
 
-                      <Col md={6}><TeamSelect teams={this.state.teams}  handleChange={this.handleAwayChange.bind(this)} /></Col>
+                      <Col md={6}><TeamSelect teams={this.state.teams}  handleChange={this.handleAwayChange.bind(this)} buttonColor="red"/></Col>
 
                   </Row>
-                  
-                </Container>
-                <Container>
 
+                </Container>
                 <br/>
-                  <Link to="/Live" ><Button fluid="true" size="massive" className="ui primary button" type="submit" value="submit" >Start Game</Button></Link>
+                <br/>
+                <Container>
+                  <Link to="/NewTeam" ><Button fluid="true" size="massive" className="ui button" color= "orange" type="submit" value="submit" >Create a new team</Button></Link>
+                <br/>
+                <br/>
+                  <Link to="/Live" ><Button fluid="true" size="massive" className="ui button" color= "green" type="submit" value="submit" >Start Game</Button></Link>
                 </Container>
               </div>
             </form>

@@ -46,19 +46,27 @@
   vertical-align: middle
 }
 
-.setup-page {
-  margin-bottom: 30px;
-  height: 90vh;
-  border-radius: 10px;
-  margin-top: 30px;
-  margin-left: 40px;
-  margin-right: 40px;
-  padding: 50px;
-  background-color: white;
+.live-game-page{
+
 }
 
-.Live-game {
+.setup-page {
+  margin-bottom: 30px;
+  height: 70vh;
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 50px;
+  background-color: rgba(255,255,255, 0.8);
 
+}
+
+.new-team {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("http://wallpapercave.com/wp/nXidHnP.jpg");
+  position: fixed;
 }
 
 .App-intro {
@@ -72,8 +80,15 @@
 
 #end_game_button  {
   position:absolute;
-       bottom:30px;
-       right:30px;
+       bottom:40px;
+       right:70px;
+       z-index: 99;
+}
+
+#back_to_setup_button  {
+  position:absolute;
+       bottom:40px;
+       right:75px;
        z-index: 99;
 }
 
@@ -102,4 +117,15 @@ div.col-md-2 {
   height: 100vh;
   background-image: url("http://wallpapercave.com/wp/nXidHnP.jpg");
   position: fixed;
+}
+
+.stat-display{
+  padding: 20px;
+  position: absolute;
+  z-index: 1000;
+  width: 80vw;
+  height: 80vh;
+  margin: 0 10vw;
+  top: 20vh;
+  background-color: rgba(0,0,0, 0.8);
 }
