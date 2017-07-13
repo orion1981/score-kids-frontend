@@ -3,9 +3,9 @@ import StatBar from '../components/StatBar'
 import Player from '../components/Player'
 import { Button } from 'semantic-ui-react'
 import { Row, Col} from 'react-flexbox-grid'
+import {withRouter} from 'react-router-dom'
 
-
-export default class LiveGameContainer extends React.Component {
+class LiveGameContainer extends React.Component {
   constructor(props){
     super(props)
 
@@ -242,7 +242,7 @@ export default class LiveGameContainer extends React.Component {
       })
     }).then(response => {
       console.log(response.data)
-    })
+    }).then(this.props.history.push("/Stats"))
   }
 
   render(){
@@ -250,11 +250,11 @@ export default class LiveGameContainer extends React.Component {
 return(
     <div >
       <StatBar homeScore={this.state.homeScore} awayScore={this.state.awayScore} homeShots={this.state.homeShots} awayShots={this.state.awayShots} endGame={this.endGame.bind(this)}/>
-        <div className="Live-game">
-          <Row middle='xs'>
+        <div>
+          <Row middle='xs' className="Live-game" id="Live-game-box">
 
             <Col style={style.home.goalie} md={2}>
-              <Player sendPlayerStats={this.collectPlayerStats} stateId="homeGoalie" id="Goalie" hVw="home" orientation={style.home} info={this.props.homeTeam.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
+              <Player sendPlayerStats={this.collectPlayerStats} stateId="homeGoalie" id="Goalie" hVw="home" orientation={style.away} info={this.props.homeTeam.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
             </Col>
             <Col style={style.home.defense} md={2}>
               <Player sendPlayerStats={this.collectPlayerStats} stateId="homeLeftDefender" id="Left Defender" hVw="home" orientation={style.home} info={this.props.homeTeam.players} addHomeG={this.addHomeGoal.bind(this)} subtractHomeG={this.subtractHomeGoal.bind(this)} addHomeS={this.addHomeShot.bind(this)} subtractHomeS={this.subtractHomeShot.bind(this)}/>
@@ -275,13 +275,14 @@ return(
               <Player sendPlayerStats={this.collectPlayerStats} stateId="awayLeftDefender" id="Left Defender" hVw="away" orientation={style.away} info={this.props.awayTeam.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
             </Col>
             <Col style={style.away.goalie} md={2}>
-              <Player sendPlayerStats={this.collectPlayerStats} stateId="awayGoalie" id="Goalie" hVw="away" orientation={style.away} info={this.props.awayTeam.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
-              <button className="ui primary button" type="submit" onClick={this.endGame.bind(this)} >
-               End Game/Update Stats
-              </button>
+              <Player sendPlayerStats={this.collectPlayerStats} stateId="awayGoalie" id="Goalie" hVw="away" orientation={style.home} info={this.props.awayTeam.players} addAwayG={this.addAwayGoal.bind(this)} subtractAwayG={this.subtractAwayGoal.bind(this)} addAwayS={this.addAwayShot.bind(this)} subtractAwayS={this.subtractAwayShot.bind(this)}/>
+
             </Col>
 
           </Row>
+          <Button id="end_game_button"  color="red" type="submit" size="massive" onClick={this.endGame.bind(this)} >
+           End Game/Update Stats
+          </Button>
         </div>
     </div>
    )
@@ -296,10 +297,11 @@ const style = {
     marginTop: 30,
     goalie: {
       paddingLeft: 50,
-      paddingTop: 150
+      paddingTop: 150,
+      zoom: 0.8
     },
     defense: {
-      paddingLeft: 50,
+      paddingRight: 50,
       paddingTop: 150
     },
     offense: {
@@ -314,8 +316,9 @@ const style = {
     filter: "FlipH",
     transform: "scaleX(-1)",
     goalie: {
-      paddingRight: 50,
-      paddingTop: 150
+      paddingLeft: 50,
+      paddingTop: 150,
+      zoom: 0.8
     },
     defense: {
       paddingLeft: 50,
@@ -331,3 +334,4 @@ const style = {
   }
 
 }
+export default withRouter(LiveGameContainer)

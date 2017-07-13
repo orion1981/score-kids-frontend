@@ -11,9 +11,9 @@ export default function StatBar(props)  {
            </div>
        </div>
        <Row className="">
-          <Col xs={6} md={4} className="Home-stats"><code><h1>HOME TEAM Score:{props.homeScore} Shots:{props.homeShots}</h1></code></Col>
-          <Col xs={6} md={4} className="Time-clock"><code>Time remaining:</code></Col>
-          <Col xsHidden md={4} className="Away-stats"><code><h1>AWAY TEAM  Score:{props.awayScore} Shots:{props.awayShots}</h1></code></Col>
+          <Col xs={6} md={4} className="Home-stats"><h3>HOME TEAM</h3><h1> Score: {props.homeScore}  &nbsp; | &nbsp; Shots: {props.homeShots}</h1></Col>
+          <Col xs={6} md={4} className="Time-clock"></Col>
+          <Col xsHidden md={4} className="Away-stats"><h3>AWAY TEAM</h3>  <h1>Score: {props.awayScore} &nbsp; | &nbsp; Shots: {props.awayShots}</h1></Col>
         </Row>
 
      </div>

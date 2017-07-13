@@ -11,10 +11,12 @@ export default class Player extends React.Component  {
       shots: 0,
       assists: 0,
       goals: 0,
+      saves: 0,
       isNoteCard: false
     }
     this.addStat = this.addStat.bind(this)
     this.subtractStat = this.subtractStat.bind(this)
+    this.playerImage= this.playerImage.bind(this)
     // this.playerPosition = this.playerPosition.bind(this)
   }
 
@@ -80,13 +82,28 @@ export default class Player extends React.Component  {
 
       var playerInfo = this.playerPosition(this.props.id)
       this.setState({ player: playerInfo})
-    
+
     }
 
 
 
   statCard(){
     console.log(this.props)
+    if (this.props.id === "Goalie"){
+      return(
+        <Panel>
+        <Row><h1>{this.state.player.name}</h1></Row>
+        <Row middle="xs">
+          <Col md={9}><h3>Stat Card</h3></Col>
+          <Col md={2}>
+            <Button onClick={this.handleClick.bind(this)}bsStyle="danger">X</Button>
+          </Col>
+        </Row>
+          <Row><Col md={9}><Button id="saves" bsStyle="primary" onClick={this.addStat}>+Save</Button>  <Button id="saves" bsStyle="warning" onClick={this.subtractStat}>-Save</Button></Col><Col md={2}><h4 className="save-stat">{this.state.saves}</h4></Col></Row>
+          <Row><Col md={9}><Button id="assists" bsStyle="primary" onClick={this.addStat}>Assist</Button>  <Button id="assists" bsStyle="warning" onClick={this.subtractStat}>Assist</Button></Col><Col md={1}><h4 className="assist-stat">{this.state.assists}</h4></Col></Row>
+        </Panel>
+      )
+    }else{
     return(
       <Panel>
       <Row><h1>{this.state.player.name}</h1></Row>
@@ -102,6 +119,7 @@ export default class Player extends React.Component  {
       </Panel>
     )
   }
+}
 
   // glyphDirection(){
   //   if (this.props.hVw === "home")
@@ -111,11 +129,15 @@ export default class Player extends React.Component  {
   // }
 
   playerImage(){
+
     if (this.state.player) {
+      const playerUrl= "https://userscontent2.emaze.com/images/ca4cecf5-8daf-49fa-93dd-02cd2958d2af/89c38a2288e09204c53fb13fdf1a082a.png"
+      const goalieUrl= "http://www.glaciericeandsnow.com/images/hockey2.png"
+      const iceImage= this.props.id === "Goalie" ? goalieUrl : playerUrl
       return(
         <Row>
           <div>
-            <img onClick={this.handleClick.bind(this)} style={this.props.orientation} src="https://userscontent2.emaze.com/images/ca4cecf5-8daf-49fa-93dd-02cd2958d2af/89c38a2288e09204c53fb13fdf1a082a.png"/>
+            <img onClick={this.handleClick.bind(this)} style={this.props.orientation} src={iceImage}/>
             {this.props.hVw === "home" ? <Panel style={playerName}>#{this.state.player.player_number} {this.state.player.name}    &nbsp;<Glyphicon glyph="arrow-right"/></Panel> : <Panel style={playerName}><Glyphicon glyph="arrow-left"/>   &nbsp; {this.state.player.name} #{this.state.player.player_number}</Panel>}
           </div>
         </Row>
@@ -124,6 +146,7 @@ export default class Player extends React.Component  {
       return null
     }
   }
+
 
   render(){
     return(

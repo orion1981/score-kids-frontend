@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Form} from 'semantic-ui-react'
+import { Form, Icon, Input, Container, Header} from 'semantic-ui-react'
 import {withRouter} from 'react-router-dom'
 
  class NewTeamForm extends React.Component {
@@ -90,82 +90,89 @@ import {withRouter} from 'react-router-dom'
 
   render(){
     return(
-      <Form className="ui form" onSubmit={this.handleSubmit}>
-        <div className="field">
-           <label>Team Name</label>
-           <input type="text" value={this.state.teamName} name="teamName" placeholder="Team name.." onChange={this.handleChange.bind(this)}/>
-        </div>
-        <div className="field">
-           <label>Mascot</label>
-           <input type="text" value={this.state.mascot} name="mascot" placeholder="Mascot.." onChange={this.handleChange.bind(this)}/>
-          </div>
-        <div className="field">
-            <label>Location</label>
-            <input type="text" value={this.state.location} name="location" placeholder="Location.." onChange={this.handleChange.bind(this)}/>
-        </div>
-            <h1>Players</h1>
-            <div className='two fields'>
-              <div className="six wide field">
-                  <label>Goalie:</label>
-                  <input type="text" value={this.state.goalieName} name="goalieName" placeholder="player name...."  onChange={this.handleChange.bind(this)}/>
-              </div>
-              <div className="six wide field">
-                <label>Goalie #:</label>
-                <input type="text" value={this.state.goalieNumber} name="goalieNumber" placeholder="Jersey #"  onChange={this.handleChange.bind(this)}/>
-              </div>
-            </div>
-            <div className='two fields'>
-              <div className="six wide field">
-                  <label>Center:</label>
-                  <input type="text" value={this.state.centerName} name="centerName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
-              </div>
-              <div className="six wide field">
-                <label>Center #:</label>
-                <input type="text" value={this.state.centerNumber} name="centerNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
-              </div>
-            </div>
-            <div className='two fields'>
-              <div className="six wide field">
-                  <label>Left Winger:</label>
-                  <input type="text" value={this.state.leftWingName} name="leftWingName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
-              </div>
-              <div className="six wide field">
-                <label>Left Winger #:</label>
-                <input type="text" value={this.state.leftWingNumber} name="leftWingNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
-              </div>
-            </div>
-            <div className='two fields'>
-              <div className="six wide field">
-                  <label>Right Winger:</label>
-                  <input type="text" value={this.state.rightWingName} name="rightWingName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
-              </div>
-              <div className="six wide field">
-                <label>Right Winger #:</label>
-                <input type="text" value={this.state.rightWingNumber} name="rightWingNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
-              </div>
-            </div>
-            <div className='two fields'>
-              <div className="six wide field">
-                  <label>Left Defense:</label>
-                  <input type="text" value={this.state.leftDefenderName} name="leftDefenderName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
-              </div>
-              <div className="six wide field">
-                <label>Left Defense #:</label>
-                <input type="text" value={this.state.leftDefenderNumber} name="leftDefenderNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
-              </div>
-            </div>
-            <div className='two fields'>
-              <div className="six wide field">
-                  <label>Right Defense:</label>
-                  <input type="text" value={this.state.rightDefenderName} name="rightDefenderName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
-              </div>
-              <div className="six wide field">
-                <label>Right Defense #:</label>
-                <input type="text" value={this.state.rightDefenderNumber} name="rightDefenderNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
-              </div>
-            </div>
 
-        <button className="ui button" type="submit">Submit</button>
+      <Form className="ui form" onSubmit={this.handleSubmit}>
+        <div className="setup-page">
+          <Container>
+            <h1>Create New Team</h1>
+              <div className="six wide field">
+                 <label>Team Name</label>
+                 <input type="text" value={this.state.teamName} name="teamName" placeholder="Team name.." onChange={this.handleChange.bind(this)}/>
+              </div>
+              <div className="six wide field">
+                 <label>Mascot</label>
+                 <input type="text" value={this.state.mascot} name="mascot" placeholder="Mascot.." onChange={this.handleChange.bind(this)}/>
+                </div>
+              <div className="six wide field">
+                  <label>Location</label>
+                  <input type="text" value={this.state.location} name="location" placeholder="Location.." onChange={this.handleChange.bind(this)}/>
+              </div>
+          </Container>
+          <Container>
+              <h1>Players</h1>
+              <div className='two fields'>
+                <div className="four wide field">
+                    <label>Goalie:</label>
+                    <Input icon="user" iconPosition='left' type="text" value={this.state.goalieName} name="goalieName" placeholder="player name...."  onChange={this.handleChange.bind(this)}/>
+                </div>
+                <div className="four wide field">
+                  <label>Goalie #:</label>
+                  <Input icon="hashtag" iconPosition='left' type="text" value={this.state.goalieNumber} name="goalieNumber" placeholder="Jersey #"  onChange={this.handleChange.bind(this)}/>
+                </div>
+              </div>
+              <div className='two fields'>
+                <div className="four wide field">
+                    <label>Center:</label>
+                    <Input icon="user" iconPosition='left' type="text" value={this.state.centerName} name="centerName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
+                </div>
+                <div className="four wide field">
+                  <label>Center #:</label>
+                  <Input icon="hashtag" iconPosition='left' type="text" value={this.state.centerNumber} name="centerNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
+                </div>
+              </div>
+              <div className='two fields'>
+                <div className="four wide field">
+                    <label>Left Winger:</label>
+                    <Input icon="user" iconPosition='left' type="text" value={this.state.leftWingName} name="leftWingName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
+                </div>
+                <div className="four wide field">
+                  <label>Left Winger #:</label>
+                  <Input icon="hashtag" iconPosition='left' type="text" value={this.state.leftWingNumber} name="leftWingNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
+                </div>
+              </div>
+              <div className='two fields'>
+                <div className="four wide field">
+                    <label>Right Winger:</label>
+                    <Input icon="user" iconPosition='left' type="text" value={this.state.rightWingName} name="rightWingName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
+                </div>
+                <div className="four wide field">
+                  <label>Right Winger #:</label>
+                  <Input icon="hashtag" iconPosition='left' type="text" value={this.state.rightWingNumber} name="rightWingNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
+                </div>
+              </div>
+              <div className='two fields'>
+                <div className="four wide field">
+                    <label>Left Defense:</label>
+                    <Input icon="user" iconPosition='left' type="text" value={this.state.leftDefenderName} name="leftDefenderName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
+                </div>
+                <div className="four wide field">
+                  <label>Left Defense #:</label>
+                  <Input icon="hashtag" iconPosition='left' type="text" value={this.state.leftDefenderNumber} name="leftDefenderNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
+                </div>
+              </div>
+              <div className='two fields'>
+                <div className="four wide field">
+                    <label>Right Defense:</label>
+                    <Input icon="user" iconPosition='left' type="text" value={this.state.rightDefenderName} name="rightDefenderName" placeholder="player name...." onChange={this.handleChange.bind(this)}/>
+                </div>
+                <div className="four wide field">
+                  <label>Right Defense #:</label>
+                  <Input icon="hashtag" iconPosition='left' type="text" value={this.state.rightDefenderNumber} name="rightDefenderNumber" placeholder="Jersey #" onChange={this.handleChange.bind(this)}/>
+                </div>
+              </div>
+              <button className="ui primary button" type="submit">Submit</button>
+            </Container>
+          </div>
       </Form>
     )
   }

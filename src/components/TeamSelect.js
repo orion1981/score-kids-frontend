@@ -1,6 +1,6 @@
 import React from "react"
 import TeamItem from "./TeamItem"
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Button } from 'semantic-ui-react'
 
 export default class TeamSelect extends React.Component {
   constructor(props){
@@ -24,17 +24,19 @@ export default class TeamSelect extends React.Component {
   render(){
     const sortedTeams = this.sortAlpha(this.getTeams())
     return(
-    <Dropdown
+      <Button.Group color='purple' fluid size="massive">
+    <Dropdown placeholder='Select Team'
    search
    floating
    labeled
    button
+   fluid
    className='team icon'
    icon='circle'
    options={sortedTeams}
    onChange={this.props.handleChange}
  />
-    // <div className="default text">Pick A Team</div>
+ </Button.Group>
 
 )
   }

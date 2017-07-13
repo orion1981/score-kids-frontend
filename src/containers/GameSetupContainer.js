@@ -5,6 +5,7 @@ import { Row, Col} from 'react-flexbox-grid'
 import {  } from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import LiveGameContainer from '../containers/LiveGameContainer'
+import { Container, Button, Segment, Card, Image, Icon } from 'semantic-ui-react'
 
 export default class GameSetupContainer extends React.Component {
   constructor(props){
@@ -47,22 +48,35 @@ componentDidMount(){
   render(){
     console.log(this.state)
     return(
-      <div>
+      <div id="setup_container">
+
         <Route path="/Live" render={() =><LiveGameContainer/>}/>
 
             <form onSubmit={ e => this.submitHandler(e)}>
               <div className="setup-page">
-                <Row middle='xs'>
-                  <h1>Game Setup Page</h1>
-                </Row>
-                <Row middle='xs'>
-                  <Col md={6}><TeamSelect teams={this.state.teams}  handleChange={this.handleHomeChange.bind(this)} />Home Team</Col>
-                  <Col md={6}><TeamSelect teams={this.state.teams}  handleChange={this.handleAwayChange.bind(this)} />Away Team</Col>
-                </Row>
-                <GameSelector />
-                    <Link to="/Live" ><input type="submit" value="submit" /></Link>
+              <Container>
+                <h1>Choose teams for matchup! </h1>
+                  <Row middle='xs'>
+                      <Col md={6}><h1>Home Team</h1></Col>
+                      <Col md={6}><h1>Away Team</h1></Col>
+                  </Row>
+                  <Row middle='xs'>
+
+                      <Col md={6}><TeamSelect teams={this.state.teams}  handleChange={this.handleHomeChange.bind(this)} /></Col>
+
+                      <Col md={6}><TeamSelect teams={this.state.teams}  handleChange={this.handleAwayChange.bind(this)} /></Col>
+
+                  </Row>
+                  
+                </Container>
+                <Container>
+
+                <br/>
+                  <Link to="/Live" ><Button fluid="true" size="massive" className="ui primary button" type="submit" value="submit" >Start Game</Button></Link>
+                </Container>
               </div>
             </form>
+
           </div>
 
    )
