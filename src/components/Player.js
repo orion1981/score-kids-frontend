@@ -52,22 +52,23 @@ export default class Player extends React.Component  {
   subtractStat(e){
     console.log("Take me Away!")
       let value = e.target.id
+      var notNegative = this.state[value] === 0 ? 0 : this.state[value] - 1
       this.props.sendPlayerStats({
         role:this.props.stateId,
-        stat:[value],
+        stat: value,
         value: notNegative
       })
     this.subtractStatsLive(e)
-      var notNegative = this.state[value] === 0 ? 0 : this.state[value] - 1
     this.setState({ [value]: notNegative})
+
   }
 
  subtractStatsLive(e){
    let value = e.target.id
     if (value === "goals")
-      {this.state[value] > 0 ? (this.props.hVw === "home" ? this.props.subtractHomeG() : this.props.subtractAwayG()) : null}
+      {this.state[value] > 0 ? (this.props.hVw === "home" ? this.props.subtractHomeG() : this.props.subtractAwayG()) : 0}
       else if (value === "shots")
-      {this.state[value] > 0 ? (this.props.hVw === "home" ? this.props.subtractHomeS() : this.props.subtractAwayS()) : null}
+      {this.state[value] > 0 ? (this.props.hVw === "home" ? this.props.subtractHomeS() : this.props.subtractAwayS()) : 0}
   }
 
   playerPosition(position){

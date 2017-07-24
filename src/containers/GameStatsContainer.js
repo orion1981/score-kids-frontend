@@ -77,10 +77,10 @@ class GameStatsContainer extends React.Component {
         </Grid.Row>
         <Grid.Row>
               <Grid.Column>
-                <Segment color="blue" className="Home-stats"><h3>G: {this.props.players.homeGoalie.playerName} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; shots:{this.props.players.homeGoalie.shots} &nbsp;|&nbsp; assists:{this.props.players.homeGoalie.assists} &nbsp;|&nbsp; saves:{this.props.players.awayGoalie.saves} </h3></Segment>
+                <Segment color="blue" className="Home-stats"><h3>G: {this.props.players.homeGoalie.playerName} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; assists:{this.props.players.homeGoalie.assists} &nbsp;|&nbsp; saves:{this.props.players.awayGoalie.saves} </h3></Segment>
               </Grid.Column>
               <Grid.Column>
-                <Segment color="red" className="Home-stats"><h3>G: {this.props.players.awayGoalie.playerName} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; shots:{this.props.players.awayGoalie.shots} &nbsp;|&nbsp; assists:{this.props.players.awayGoalie.assists} &nbsp;|&nbsp; saves:{this.props.players.awayGoalie.saves} </h3></Segment>
+                <Segment color="red" className="Home-stats"><h3>G: {this.props.players.awayGoalie.playerName} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;|&nbsp; assists:{this.props.players.awayGoalie.assists} &nbsp;|&nbsp; saves:{this.props.players.awayGoalie.saves} </h3></Segment>
               </Grid.Column>
         </Grid.Row>
         <Grid.Row>

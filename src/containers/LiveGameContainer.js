@@ -63,8 +63,8 @@ class LiveGameContainer extends React.Component {
           assists: 0
         },
         homeGoalie:{
-          playerId: this.props.awayTeam.players[5].id,
-          playerName: this.props.awayTeam.players[5].name,
+          playerId: this.props.homeTeam.players[5].id,
+          playerName: this.props.homeTeam.players[5].name,
           goals: 0,
           shots: 0,
           assists: 0,
@@ -123,7 +123,7 @@ class LiveGameContainer extends React.Component {
     console.log(playerStatObj)
 
     //let prevPlayerStat = {playersStats:{[playerStatObj.role]:[playerStatObj.stat][0]}}
-    let individualStats = Object.assign({},this.state.playersStats[playerStatObj.role],{[playerStatObj.stat]:[playerStatObj.value][0]})
+    let individualStats = Object.assign({},this.state.playersStats[playerStatObj.role],{[playerStatObj.stat]:[playerStatObj.value]})
     let playerStats = {[playerStatObj.role]:individualStats}
     //let stat = {Object.assign({},this.state.playersStats,{[playerStatObj.role]:{[playerStatObj.stat]:[playerStatObj.value][0]}})}
     let aggregateStats = Object.assign({},this.state.playersStats,playerStats)
