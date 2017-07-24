@@ -70,9 +70,18 @@ componentDidMount(){
 
                 </Container>
                 <br/>
-                <br/>
                 <Container>
-                  <Link to="/NewTeam" ><Button fluid="true" size="massive" className="ui button" color= "orange" type="submit" value="submit" >Create a new team</Button></Link>
+                  <Link to="/NewTeam" ><Button size="massive" className="ui button" color= "orange" type="submit" value="submit" >Create a new team</Button></Link>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <br/>
                 <br/>
                   <Link to="/Live" ><Button fluid="true" size="massive" className="ui button" color= "green" type="submit" value="submit" >Start Game</Button></Link>
