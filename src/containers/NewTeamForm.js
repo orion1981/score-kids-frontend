@@ -193,7 +193,7 @@ const style={
   playerImg:{
     position: "relative",
     left: "-400px",
-    height: 500,
+    height: 550,
     width: 700
 
   }
