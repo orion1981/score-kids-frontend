@@ -44,7 +44,7 @@ import { Row, Col } from 'react-flexbox-grid'
    }
 
   createTeam(){
-    const url = "http://cs2-sk-api.herokuapp.com/api/v1/teams"
+    const url = "https://cs2-sk-api.herokuapp.com/api/v1/teams"
     fetch(url, {
       method: 'POST',
       headers: {

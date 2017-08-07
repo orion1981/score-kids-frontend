@@ -198,7 +198,7 @@ class LiveGameContainer extends React.Component {
   createGame(){
     console.log('creating game')
 
-    const url = "http://cs2-sk-api.herokuapp.com/api/v1/games"
+    const url = "https://cs2-sk-api.herokuapp.com/api/v1/games"
     fetch(url, {
       method: 'POST',
       headers: {
