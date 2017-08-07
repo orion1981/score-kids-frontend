@@ -23,7 +23,7 @@ export default class GameSetupContainer extends React.Component {
   }
 
 componentDidMount(){
-    fetch('http://localhost:3000/api/v1/teams')
+    fetch('http://cs2-sk-api.herokuapp.com/api/v1/teams')
             .then(res => res.json())
             .then(data => this.setState({teams: data}))
 

@@ -14,7 +14,7 @@ class GameStatsContainer extends React.Component {
 
 
     componentDidMount(){
-        fetch('http://localhost:3000/api/v1/player_games')
+        fetch('http://lcs2-sk-api.herokuapp.com/api/v1/player_games')
                 .then(res => res.json())
                 .then(data => this.setState({allPlayerStats: data}))
       }

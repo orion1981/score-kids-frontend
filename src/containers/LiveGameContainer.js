@@ -2,7 +2,7 @@ import React from 'react'
 import StatBar from '../components/StatBar'
 import Player from '../components/Player'
 import { Button } from 'semantic-ui-react'
-import { Row, Col} from 'react-flexbox-grid'
+import { Row, Col } from 'react-flexbox-grid'
 import {withRouter} from 'react-router-dom'
 import GameStatsContainer from '../containers/GameStatsContainer'
 
@@ -198,7 +198,7 @@ class LiveGameContainer extends React.Component {
   createGame(){
     console.log('creating game')
 
-    const url = "http://localhost:3000/api/v1/games"
+    const url = "http://cs2-sk-api.herokuapp.com/api/v1/games"
     fetch(url, {
       method: 'POST',
       headers: {
