@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { Button, Container } from 'semantic-ui-react'
 
 import GameSetupContainer from './containers/GameSetupContainer'
 import LiveGameContainer from './containers/LiveGameContainer'
@@ -46,13 +47,12 @@ class App extends Component {
               <h2>Score kids</h2>
             </div>
             <p className="App-intro">
-              Start page!
               <div>
                 <ul>
-                  <li><Link to="/Setup" activeStyle={{ color: 'red' }}>Setup</Link></li>
-                  <li><Link to="/Live" activeStyle={{ color: 'red' }}>Live Game</Link></li>
-                  <li><Link to="/NewTeam" activeStyle={{ color: 'red' }}>Create a Team</Link></li>
-                  <li><Link to="/Stats" activeStyle={{ color: 'red' }}>Stat page</Link></li>
+                  <Link to="/Setup" activeStyle={{ color: 'red' }}><Container><Button>Setup</Button></Container></Link>
+                  <li><Link to="/Live" activeStyle={{ color: 'red' }}><Container><Button size="massive">Live Game</Button></Container></Link></li>
+                  <li><Link to="/NewTeam" activeStyle={{ color: 'red' }}><Container><Button>Create a Team</Button></Container></Link></li>
+                  <li><Link to="/Stats" activeStyle={{ color: 'red' }}><Container><Button>Stat page</Button></Container></Link></li>
                 </ul>
               </div>
             </p>

@@ -41,6 +41,12 @@
   z-index: 100
 }
 
+.App-intro {
+  background-image: url("http://wallpapercave.com/wp/nXidHnP.jpg");
+  width: 100vw;
+  height: 100vh;
+}
+
 
 .align-middle{
   vertical-align: middle
