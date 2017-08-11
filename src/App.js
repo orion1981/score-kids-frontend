@@ -49,10 +49,14 @@ class App extends Component {
             <p className="App-intro">
               <div>
                 <ul>
-                  <Link to="/Setup" activeStyle={{ color: 'red' }}><Container><Button>Setup</Button></Container></Link>
-                  <li><Link to="/Live" activeStyle={{ color: 'red' }}><Container><Button size="massive">Live Game</Button></Container></Link></li>
-                  <li><Link to="/NewTeam" activeStyle={{ color: 'red' }}><Container><Button>Create a Team</Button></Container></Link></li>
-                  <li><Link to="/Stats" activeStyle={{ color: 'red' }}><Container><Button>Stat page</Button></Container></Link></li>
+                  <br/>
+                  <br/>
+                  <br/>
+                    <Link to="/Setup" activeStyle={{ color: 'red' }}><Container><Button className="Homepage-button" size="massive" color="blue">Start New Game</Button></Container></Link>
+                  <br/>
+                  <br/>
+                  <br/>
+                    <Link to="/NewTeam" activeStyle={{ color: 'red' }}><Container><Button className="Homepage-button" size="massive" color="blue">Create a Team</Button></Container></Link>
                 </ul>
               </div>
             </p>
@@ -62,5 +66,9 @@ class App extends Component {
     );
   }
 }
+// <br/>
+// <Link to="/Live" activeStyle={{ color: 'red' }}><Container><Button className="Homepage-button" size="massive" color="blue">Live Game</Button></Container></Link>
+// <br/>
+//   <Link to="/Stats" activeStyle={{ color: 'red' }}><Container><Button className="Homepage-button" size="massive" color="blue">Stat page</Button></Container></Link>
 
 export default App;
