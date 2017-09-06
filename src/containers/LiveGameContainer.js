@@ -331,7 +331,7 @@ const style = {
     height: 150,
     marginTop: 30,
     goalie: {
-      paddingLeft: 50,
+      paddingLeft: 100,
       paddingTop: 150,
       zoom: 0.8
     },

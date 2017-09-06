@@ -133,7 +133,7 @@ export default class Player extends React.Component  {
 
     if (this.state.player) {
       const playerUrl= "https://userscontent2.emaze.com/images/ca4cecf5-8daf-49fa-93dd-02cd2958d2af/89c38a2288e09204c53fb13fdf1a082a.png"
-      const goalieUrl= "http://www.glaciericeandsnow.com/images/hockey2.png"
+      const goalieUrl= "http://image.spreadshirtmedia.com/image-server/v1/designs/11834194,width=200,height=200"
       const iceImage= this.props.id === "Goalie" ? goalieUrl : playerUrl
       return(
         <Row>
